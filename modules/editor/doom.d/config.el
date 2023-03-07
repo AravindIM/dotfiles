@@ -76,3 +76,80 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :custom
+  ;; (+lsp-company-backends '(company-tabnine :separate company-capf company-yasnippet)) ;; to enable Tab-nine autocomplete
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
+(use-package direnv
+ :config
+ (direnv-mode))
+
+(use-package lsp-mode
+  :after (lsp direnv)
+  :commands (lsp lsp-deferred)
+  :config
+  (lsp-enable-which-key-integration t)
+  )
+
+(after! lsp-mode
+    (setq lsp-enable-symbol-highlighting nil)                   ;; 1
+    (setq lsp-ui-doc-enable nil)                                ;; 2
+    (setq lsp-ui-doc-show-with-cursor nil)
+    (setq lsp-ui-doc-show-with-mouse nil)
+    (setq lsp-lens-enable nil)                                  ;; 3
+    (setq lsp-headerline-breadcrumb-segments
+          '(path-up-to-project file symbols))
+    (setq lsp-headerline-breadcrumb-enable nil)                 ;; 4
+    (setq lsp-ui-sideline-enable t)                             ;; 5
+    (setq lsp-ui-sideline-show-code-actions t)
+    (setq lsp-ui-sideline-enable t)                             ;; 6
+    (setq lsp-ui-sideline-show-hover t)
+    (setq lsp-modeline-code-actions-enable t)                   ;; 7
+
+    (setq lsp-diagnostics-provider :auto)                       ;; 8
+    (setq lsp-ui-sideline-enable t)                             ;; 9
+    (setq lsp-eldoc-enable-hover t)                             ;; 10
+    (setq lsp-modeline-diagnostics-enable t)                    ;; 11
+
+    (setq lsp-signature-auto-activate t)                        ;; 12
+    (setq lsp-signature-render-documentation nil)               ;; 13
+
+    (setq lsp-completion-provider :capf)                        ;; 14
+    (setq lsp-completion-show-detail t)                         ;; 15
+    (setq lsp-completion-show-kind t)                           ;; 16
+  )
+
+(use-package lsp-ui
+  :after lsp
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-position 'bottom)
+  )
+
+(use-package lsp-treemacs
+  :after lsp)
+
+(setq lsp-clients-clangd-args '("--header-insertion=never"))
+
+(use-package lsp-pyright
+  :after lsp
+  :ensure t
+  :init
+  (setq lsp-pyright-multi-root nil)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
+(use-package pyvenv
+  :config
+  (pyvenv-mode 1))
+
+(setq projectile-project-search-path '("~/Projects"))

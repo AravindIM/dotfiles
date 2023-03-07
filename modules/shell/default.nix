@@ -1,0 +1,4 @@
+[
+  ./bash.nix
+  ./zsh.nix
+]
