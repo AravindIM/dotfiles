@@ -1,0 +1,118 @@
+{
+  "layer" : "top",
+  "position" : "top",
+  "height" : 35,
+  "spacing" : 4,
+  "tray" : { "spacing" : 5 },
+  "modules-center" : [ "hyprland/window" ],
+  "modules-left" : [ "wlr/workspaces" ],
+
+  "modules-right" : [ "idle_inhibitor", "custom/separator", "pulseaudio", "custom/separator", "cpu", "custom/separator", "memory", "custom/separator", "temperature", "custom/separator", "backlight", "custom/separator", "battery", "custom/separator", "clock", "custom/separator", "tray", "custom/separator", "custom/power"],
+
+  "wlr/workspaces" : {
+    "format" : "<span font='11'>{name}</span>",
+    "all-outputs" : true,
+    "active-only" : false,
+    "on-click" : "activate",
+  },
+  "hyprland/window": {
+    "max-length" : 50,
+  },
+  "idle_inhibitor" : {
+    "format" : "<span font='11'> {icon} </span>",
+    "format-icons" : {
+      "activated" : "",
+      "deactivated" : "",
+    },
+  },
+  "clock" : {
+    "format" : "{:%b %d %H:%M}  ",
+    "tooltip-format" : "<tt><small>{calendar}</small></tt>",
+    // "format-alt" : "{:%A, %B %d, %Y} ",
+  },
+  "cpu" : {
+    "format" : " {usage}% <span font='11'>  </span> ",
+    "interval" : 1,
+  },
+  "disk" : {
+    "format" : "{percentage_used}% <span font='11'>  </span>",
+    "path" : "/",
+    "interval" : 30,
+  },
+  "memory" : {
+    "format" : "{}% <span font='11'>  </span>",
+    "interval" : 1,
+  },
+  "backlight" : {
+    "device" : "intel_backlight",
+    "format" : "{percent}% <span font='11'> {icon} </span>",
+    "format-icons" : ["", ""],
+    "on-scroll-down" : "light -U 5",
+    "on-scroll-up" : "light -A 5",
+    "tooltip-format" : "{percent}% {icon}",
+  },
+  "battery" : {
+    "bat" : "BAT0",
+    "interval" : 1,
+    "states" : {
+      "warning" : 30,
+      "critical" : 15,
+    },
+    "format" : "{capacity}% <span font='11'> {icon} </span>",
+    "format-charging" : "{capacity}% <span font='11'> </span>",
+    "format-icons" : ["", "", "", "", ""],
+  },
+  "network" : {
+    "format-wifi" : "<span font='11'>  </span>",
+    "format-ethernet" : "<span font='11'>  </span>",
+    // "format-ethernet" : "<span font='11'>  </span> {ifname}: {ipaddr}/{cidr}",
+    "format-linked" : "<span font='11'> 睊</span> {ifname} (No IP)",
+    "format-disconnected" : "<span font='11'> 睊</span> Not connected",
+    // "format-alt" : "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format" : "{essid} {ipaddr}/{cidr}",
+    // "on-click-right" : "alacritty -e nmtui",
+  },
+  "pulseaudio" : {
+    "format" : "<span font='11'> {icon} </span> {volume}% {format_source} ",
+    "format-bluetooth" : "<span font='11'> {icon} </span> {volume}% {format_source} ",
+    "format-bluetooth-muted" : "<span font='11'> x </span> {volume}% {format_source} ",
+    "format-muted" : "<span font='11'> x </span> {format_source} ",
+    // "format-source" : "{volume}% <span font='11'>  </span>",
+    "format-source" : "<span font='10'>  </span> ",
+    "format-source-muted" : "<span font='11'>  </span> ",
+    "format-icons" : {
+      "headphone" : "",
+      "hands-free" : "",
+      "headset" : "",
+      "phone" : "",
+      "portable" : "",
+      "car" : "",
+      "default" : ["", "", ""],
+    },
+    "tooltip-format" : "{desc}, {volume}%",
+    "on-click" : "pamixer -t",
+    "on-click-right" : "pamixer --default-source -t",
+    "on-click-middle" : "pavucontrol",
+  },
+  "temperature" : {
+    //  "thermal-zone" : 2,
+    //  "hwmon-path" : "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold" : 80,
+    //  "format-critical" : "{temperatureC}°C {icon}",
+    "format" : "{temperatureC}°C <span font='11'>{icon}</span>",
+    "format-icons" : ["", "", ""],
+  },
+  "tray" : {
+    "icon-size" : 16,
+  },
+  "custom/power" : {
+    "format" : "",
+    "on-click" : "exec wlogout",
+    "tooltip" : false,
+  },
+  "custom/separator" : {
+    "format" : "|",
+	"interval": "once",
+    "tooltip" : false,
+  },
+}
