@@ -1,0 +1,79 @@
+@import url("file:///home/aim/.cache/wal/colors-waybar.css");
+
+* {
+  transition: 0.2s;
+  color: #aaaaaa;
+}
+
+#window {
+  /* background-color: rgba(0,0,0,0.8); */
+  background-color: alpha(@background, 0.8);
+  background-position: 50% 30%;
+  background-size: auto 100%;
+  border-radius: 20px;
+}
+
+#input {
+  border-radius: 20px;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  background-color: alpha(@background, 0.7);
+  color: @color5;
+}
+
+#input:focus {
+  box-sizing: border-box;
+  background-color: alpha(@foreground, 0.7);
+  outline: none;
+  border-color:@color5;
+  color: @background;
+}
+
+#outer-box {
+  padding: 20px;
+  color: @background;
+  font-family: 'Fira Code';
+  font-weight: 600;
+  font-size: 16px;
+}
+
+expander {
+  background-color: rgba(69, 29, 50, 0.0);
+}
+
+#entry {
+  margin: 10px 10px;
+  padding: 18px 16px;
+  border-radius: 20px;
+}
+
+#entry label {
+  color: alpha(@color5,0.9);
+}
+
+#entry:selected{
+  background-color:alpha(@color5,0.9);
+  outline: none;
+}
+
+#entry:selected label {
+  color:rgba(255,255,255,1.0);
+}
+
+#entry:hover label {
+  color: rgba(255,255,255,1.0);
+}
+
+list {
+  margin: 16px 0;
+  background-color: rgba(255,255,255,0.0);
+}
+
+list #entry:hover {
+  background-color:alpha(@color15, 0.5);
+  outline: none;
+}
+
+list #entry:hover label {
+  color:rgba(255,255,255,1.0);
+}
