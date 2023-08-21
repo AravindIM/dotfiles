@@ -1,0 +1,26 @@
+clock
+indicator
+indicator-radius=100
+indicator-thickness=30
+ring-color=ffffff55
+ring-ver-color=0091ea99
+ring-wrong-color=d5000099
+ring-clear-color=6200ea99
+inside-color=00000088
+inside-ver-color=00000088
+inside-wrong-color=00000088
+inside-clear-color=00000088
+text-color=ffffff
+text-ver-color=0091ea
+text-wrong-color=d50000
+text-clear-color=6200ea
+key-hl-color=6200ea
+line-color=00000055
+separator-color=00000000
+grace=2
+fade-in=0.2
+effect-blur=7x5
+effect-vignette=0.5:0.5
+image=$(cat $HOME/.cache/wal/wal)
+ignore-empty-password
+show-failed-attempts
