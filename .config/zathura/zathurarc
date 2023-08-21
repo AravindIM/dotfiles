@@ -1,0 +1,5 @@
+set window-height 3000
+set window-width 3000
+set selection-clipboard clipboard
+map i navigate previous
+map u navigate next
