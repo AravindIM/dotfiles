@@ -43,6 +43,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:$HOME/go/bin"
-
-# Clear screen only when not sourced manually; helps remove text typed before zsh loading finishes
-[[ $ZSH_EVAL_CONTEXT =~ :file$ ]] || clear
