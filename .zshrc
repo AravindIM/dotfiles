@@ -9,7 +9,7 @@ SAVEHIST=1000
 
 # Configurations
 setopt autocd beep extendedglob nomatch notify
-bindkey -e
+bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/aim/.zshrc'
@@ -22,7 +22,6 @@ compinit
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
 alias vim='nvim'
 alias vi='nvim'
 
