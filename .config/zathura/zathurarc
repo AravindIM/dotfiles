@@ -3,3 +3,6 @@ set window-width 3000
 set selection-clipboard clipboard
 map i navigate previous
 map u navigate next
+set recolor "true"
+set default-bg rgba(0,0,0,0.4)
+set recolor-lightcolor rgba(0,0,0,0)

@@ -12,7 +12,7 @@ window#waybar {
     border-radius: 100px;
     color: @foreground;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
 
 window#waybar.hidden {
@@ -60,7 +60,7 @@ window#waybar.solo {
     box-shadow: inset 0 -3px #f53c3c;
     border: none;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 0.2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -104,7 +104,7 @@ window#waybar.solo {
 #battery.critical:not(.charging) {
     color: #f53c3c;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 0.2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -144,7 +144,12 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    color: @color5;
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #language {
