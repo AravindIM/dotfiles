@@ -1,17 +1,15 @@
-@import url("file:///home/aim/.cache/wal/colors-waybar.css");
-
 * {
     background-image: none;
 }
 window {
     /* background-color: rgba(12, 12, 12, 0.9); */
-    background-color: transparent;
+    background-color: #000000;
 }
 button {
-    color: @foreground;
-    background-color: @background;
+    color: #ffffff;
+    background-color: #000000;
     border-style: solid;
-    border-color: @color2;
+    border-color: #eeeeee;
     border-width: 2px;
     background-repeat: no-repeat;
     background-position: center;
@@ -19,12 +17,12 @@ button {
 }
 
 button:active, button:focus {
-    background-color: @color9;
+    background-color: #222222;
     outline-style: none;
 }
 
 button:hover {
-    background-color: @color5;
+    background-color: #555555;
     outline-style: none;
 }
 
