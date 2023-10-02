@@ -74,6 +74,28 @@ require('lazy').setup({
     opts = {} -- this is equalent to setup({}) function
   },
 
+  {
+    'akinsho/flutter-tools.nvim',
+    opts = {
+      ui = {
+        border = "rounded",
+        notification_style = 'native'
+      },
+      decorations = {
+        statusline = {
+          app_version = false,
+          device = false,
+          project_config = false,
+        }
+      },
+      debugger = {
+        enabled = false,
+        run_via_dap = false,
+        exception_breakpoints = {},
+      },
+    }
+  },
+
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
