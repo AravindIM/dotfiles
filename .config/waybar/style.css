@@ -60,8 +60,7 @@ window#waybar.solo {
 
 @keyframes blink {
     to {
-        color: #000000;
-        background: #f53c3c;
+        color: #f53c3c;
     }
 }
 
@@ -71,6 +70,10 @@ window#waybar.solo {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#battery.charging {
+    color: #2ff924;
 }
 
 label:focus {
@@ -87,7 +90,6 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    color: #f53c3c;
     animation-name: blink;
     animation-duration: 0.2s;
     animation-timing-function: linear;

@@ -57,7 +57,7 @@
       "critical" : 15,
     },
     "format" : "BAT: {capacity}%",
-    "format-charging" : "BAT: {capacity}% CHARGING",
+    "format-charging" : "BAT: {capacity}%+",
   },
   "pulseaudio" : {
     "format" : "<span font='10'> {icon} </span> {volume}% {format_source}",
