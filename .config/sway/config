@@ -185,9 +185,11 @@ bindsym Print exec wl-copy < $(grimshot save area)
 # exec easyeffects  --gapplication-service 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=compositor_name
+exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
 exec xhost + local:
 exec light -S 5
 exec swayidle -w timeout 300 'swaylock -f' timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' timeout 1200 'systemctl suspend' before-sleep 'swaylock -f'
 exec lxpolkit
+exec wl-paste -t text --watch clipman store --no-persist
 exec nm-applet --indicator
 exec blueman-applet
