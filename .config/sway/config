@@ -28,7 +28,7 @@ smart_borders on
 # Output configuration
 
 output * bg ~/.wallpaper fill
-output * scale 1
+output * scale 1.25
 
 # Input configuration
 input "type:touchpad" {
@@ -59,7 +59,7 @@ bindsym $mod+q kill
 bindsym $mod+Shift+r wkill
 bindsym $mod+p exec $menu
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+w exec librewolf
+bindsym $mod+Shift+w exec firefox
 bindsym $mod+Shift+q exec wlogout
 
 # Moving around:
@@ -167,6 +167,8 @@ mode "resize" {
 # Media Keys
 bindsym XF86AudioLowerVolume exec pamixer -d 5
 bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym Shift+XF86AudioLowerVolume exec pamixer -d 5 --allow-boost
+bindsym Shift+XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost
 bindsym XF86AudioMute exec pamixer -t 
 
 bindsym XF86MonBrightnessDown exec light -U 5
@@ -184,11 +186,13 @@ bindsym Print exec wl-copy < $(grimshot save area)
 
 # exec easyeffects  --gapplication-service 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=compositor_name
-exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
+exec hash dbus-update-activation-environment 2>/dev/null && \
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/libexec/xdg-desktop-portal -r
+#& /usr/libexec/xdg-desktop-portal-wlr
 exec xhost + local:
 exec light -S 5
-exec swayidle -w timeout 300 'swaylock -f' timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' timeout 1200 'systemctl suspend' before-sleep 'swaylock -f'
+exec swayidle -w timeout 300 'swaylock -f' timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' timeout 1200 'systemctl suspend' before-sleep 'playerctl pause' before-sleep 'swaylock -f'
 exec lxpolkit
 exec wl-paste -t text --watch clipman store --no-persist
 exec nm-applet --indicator
