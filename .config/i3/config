@@ -1,0 +1,210 @@
+# SWAY CONFIG
+
+# Variables
+
+set $mod Mod1
+set $left h
+set $down j
+set $up k
+set $right l
+set $menu rofi -i -matching fuzzy -show drun 
+set $term kitty
+set $wallpaper ~/Pictures/Wallpaper.png
+set $lock i3lock -k -e -f -n --time-color=ffffffff --date-color=ffffffff --wrong-color=ffffffff --verif-color=ffffffff --indicator -i
+
+font pango:FiraCode Bold 12
+floating_modifier $mod
+default_border pixel 2
+client.focused #ffffff #ffffff #000000 #fc2d2d
+client.unfocused #000000 #000000 #ffffff
+client.focused_inactive #000000 #000000 #ffffff
+gaps inner 5
+gaps outer 5
+
+# No gaps if there's only 1 window
+smart_gaps on
+smart_borders on
+
+# Hides the borders if theres only 1 window
+
+# Output configuration
+
+# output * bg ~/.wallpaper fill
+# output * scale 1.25
+# 
+# # Input configuration
+# input "type:touchpad" {
+# 	dwt enabled
+# 	tap disabled
+# 	natural_scroll enabled
+# 	scroll_button BTN_MIDDLE
+# 	scroll_method on_button_down
+# 	middle_emulation disabled
+# }
+# input "type:pointer" {
+# 	natural_scroll disabled
+# }
+# 
+# input "type:keyboard" {
+# 	xkb_layout us
+# }
+
+bar {
+	status_command		SCRIPT_DIR=/usr/libexec/i3blocks i3blocks
+	position		top
+	workspace_buttons	yes
+}
+
+# Key bindings
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term -a float
+bindsym $mod+q kill
+bindsym $mod+p exec $menu
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+c wkill
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+q exec i3-msg exit
+bindsym $mod+x exec --no-startup-id $lock $wallpaper
+
+# Moving around:
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+#resize
+bindsym $mod+Mod4+$left exec swaymsg resize shrink right 10px || swaymsg resize grow left 10px
+bindsym $mod+Mod4+$down exec swaymsg resize grow down 10px || swaymsg resize shrink up 10px
+bindsym $mod+Mod4+$up exec swaymsg resize shrink down 10px || swaymsg resize grow up 10px
+bindsym $mod+Mod4+$right exec swaymsg resize grow right 10px || swaymsg resize shrink left 10px
+
+# Workspaces:
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Layout stuff:
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+t layout toggle split
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+s layout stacking
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+Shift+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Sticky
+bindsym $mod+s sticky toggle
+# Scratchpad:
+
+bindsym $mod+bracketleft move scratchpad
+bindsym $mod+bracketright scratchpad show 
+
+
+# Resizing containers:
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+# Media Keys
+bindsym XF86AudioLowerVolume exec pamixer -d 5 && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pamixer -i 5 && pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86AudioLowerVolume exec pamixer -d 5 --allow-boost && pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute exec pamixer -t && pkill -SIGRTMIN+10 i3blocks 
+
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5 
+# bindsym Print exec mkdir -p ~/Pictures/Screenshots;grim -g "$(slurp)" - | swappy -f - -o ~/Pictures/Screenshots/Screenshot_$(date +%Hh_%Mm_%Ss_%d_%B_%Y).png && notify-send "Saved to ~/Pictures/Screenshots/Screenshot_$(date +%Hh_%Mm_%Ss_%d_%B_%Y).png"
+# bindsym Print exec wl-copy < $(grimshot save area)
+
+# bindsym XF86AudioStop exec playerctl stop
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
+
+
+# Rules
+
+exec --no-startup-id picom -b
+exec --no-startup-id feh --bg-scale $wallpaper &
+exec --no-startup-id killall pulseaudio 
+exec --no-startup-id pulseaudio --start
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id light -S 5
+exec --no-startup-id killall xidlehook
+exec xidlehook \
+--detect-sleep \
+--not-when-audio \
+--not-when-fullscreen \
+--timer 180 'xset dpms force standby' '' \
+--timer 180 "$lock $wallpaper" '' \
+--timer 180 'loginctl suspend' '' \
+--socket "/tmp/xidlehook.sock"
+
+# exec easyeffects  --gapplication-service 
+# exec lxpolkit
