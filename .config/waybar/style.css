@@ -1,14 +1,18 @@
+@import "mocha.css";
+
 * {
     border: none;
-    font-family: FiraCodeNerdFont, Roboto Bold, Helvetica, Arial, sans-serif;
+    font-family: JetBrainsMono Nerd Font Bold, Roboto Bold, Helvetica, Arial, sans-serif;
     font-size: 12px;
     border-radius: 0;
 }
 
 window#waybar {
     /* background: shade(alpha(#000000, 0.4), 1.0); */
-    background: #000000;
-    color: #ffffff;
+    /* background: #000000;
+    color: #ffffff; */
+    color: @text;
+    background-color: shade(@base, 0.9);
     transition-property: background-color;
     transition-duration: 0.5s;
 }
@@ -29,7 +33,7 @@ window#waybar.solo {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #ffffff;
+    color: @text;
     border: none;
 }
 
@@ -39,8 +43,8 @@ window#waybar.solo {
 }
 
 #workspaces button.focused {
-    color: #000000;
-    background: #ffffff;
+    color: @base;
+    background: @maroon;
     border: none;
 }
 
@@ -98,7 +102,5 @@ label:focus {
 }
 
 #custom-power {
-    color: #000000;
-    background: #ffffff;
     padding: 0 10px;
 }
