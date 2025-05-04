@@ -1,0 +1,8 @@
+general.import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+[window]
+opacity = 0.9
+[font]
+normal = { family = "Jetbrains Mono NerdFont", style="Regular" }
+size = 12

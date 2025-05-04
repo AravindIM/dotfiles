@@ -2,19 +2,16 @@
 
 * {
     border: none;
-    font-family: JetBrainsMono Nerd Font Bold, Roboto Bold, Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, Roboto Bold, Helvetica, Arial, sans-serif;
     font-size: 12px;
-    border-radius: 0;
+    border-radius: 0px;
 }
 
 window#waybar {
-    /* background: shade(alpha(#000000, 0.4), 1.0); */
-    /* background: #000000;
-    color: #ffffff; */
+    background: transparent;
     color: @text;
-    background-color: shade(@base, 0.9);
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    transition-property: background;
+    transition-duration: .5s;
 }
 
 window#waybar.hidden {
@@ -23,65 +20,161 @@ window#waybar.hidden {
 
 /*
 window#waybar.empty {
-    background-color: transparent;
+    background: transparent;
 }
 window#waybar.solo {
-    background-color: #FFFFFF;
+    background: #FFFFFF;
 }
 */
 
+.modules-center {
+    background: @base;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 9999px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.modules-right {
+    background: @base;
+}
+
+.modules-right widget {
+    min-width: 40px;
+}
+
+.modules-right > widget:first-child > * {
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+}
+
+.modules-right > widget:last-child > * {
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+}
+
+#workspaces {
+    border-radius: 9999px;
+    background: @base;
+}
+
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
+    padding: 0 10px;
+    background: transparent;
     color: @text;
     border: none;
+    border-radius: 9999px;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: @sky;
+    color: @base;
     border: none;
 }
 
 #workspaces button.focused {
+    background: @red;
     color: @base;
-    background: @maroon;
     border: none;
 }
 
 #workspaces button.active {
-    color: #000000;
-    background: #ffffff;
+    padding: 0 15px;
+    background: @mauve;
+    color: @base;
     border: none;
 }
 
 #workspaces button.urgent {
-    animation-name: blink;
-    animation-duration: 0.2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background: shade(alpha(@red, 0.7), 0.8);
+    color: @base;
+}
+
+#mode {
+    background: @base;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd
+#gamemode
+ {
+    padding: 0 10px;
+    color: @text;
+}
+
+#cpu,
+#network,
+#temperature,
+#battery,
+#tray {
+    color: @pink;
+}
+
+#pulseaudio,
+#memory,
+#backlight,
+#language,
+#keyboard-state,
+#clock {
+    color: @lavender;
+}
+
+#battery.charging, #battery.plugged {
+    color: @base;
+    background: @green;
 }
 
 @keyframes blink {
     to {
-        color: #f53c3c;
+        background: @maroon;
+        color: @base;
     }
 }
 
 #battery.critical:not(.charging) {
+    background: @red;
+    color: @base;
     animation-name: blink;
-    animation-duration: 0.2s;
+    animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-#battery.charging {
-    color: #2ff924;
+label:focus {
+    background: @base;
 }
 
-label:focus {
-    background-color: #000000;
+#network.disconnected {
+    background: @red;
+    color: @base;
+}
+
+#pulseaudio.muted {
+    background: @red;
+    color: @base;
+}
+
+#temperature.critical {
+    background: @red;
+    color: @base;
+}
+
+#tray * {
+    min-width: 30px;
 }
 
 #tray > .passive {
@@ -90,17 +183,45 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #8aadf4;
+    background: @peach;
+    color: @base;
+}
+
+#idle_inhibitor {
+    color: @overlay0;
 }
 
 #idle_inhibitor.activated {
-    animation-name: blink;
-    animation-duration: 0.2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    background: @red;
+    color: @base;
+}
+
+#language {
+    color: @base;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+
+#keyboard-state {
+    color: @base;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: @base;
 }
 
 #custom-power {
-    padding: 0 10px;
+    background: @red;
+    color: @base;
+    padding: 0 15px;
+
 }
