@@ -40,8 +40,8 @@ window#waybar.solo {
     background: @base;
 }
 
-.modules-right widget {
-    min-width: 40px;
+.modules-right * {
+    min-width: 36px;
 }
 
 .modules-right > widget:first-child > * {
@@ -171,10 +171,6 @@ label:focus {
 #temperature.critical {
     background: @red;
     color: @base;
-}
-
-#tray * {
-    min-width: 30px;
 }
 
 #tray > .passive {
