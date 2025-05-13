@@ -18,26 +18,32 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
+window#waybar.empty #window {
     background: transparent;
+    padding: 0px;
 }
+/*
 window#waybar.solo {
     background: #FFFFFF;
 }
 */
 
 .modules-center {
+    border-radius: 9999px;
+}
+
+#window {
     background: @base;
+    border-radius: 9999px;
     padding-left: 20px;
     padding-right: 20px;
-    border-radius: 9999px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .modules-right {
     background: @base;
+    border-radius: 9999px;
 }
 
 .modules-right * {
