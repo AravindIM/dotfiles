@@ -1,40 +1,26 @@
-@import "mocha.css";
+@import "gruvbox-dark.css";
 
 * {
     border: none;
-    font-family: FontAwesome, Roboto Bold, Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-family: Departure Mono NerdFont,FontAwesome, Roboto Bold, Helvetica, Arial, sans-serif;
+    font-size: 16px;
     border-radius: 0px;
 }
 
 window#waybar {
     background: transparent;
-    color: @text;
+    color: @fg;
     transition-property: background;
     transition-duration: .5s;
+    background: @bg;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-window#waybar.empty #window {
-    background: transparent;
-    padding: 0px;
-}
-/*
-window#waybar.solo {
-    background: #FFFFFF;
-}
-*/
-
-.modules-center {
-    border-radius: 9999px;
-}
 
 #window {
-    background: @base;
-    border-radius: 9999px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: 10px;
@@ -42,64 +28,43 @@ window#waybar.solo {
 }
 
 .modules-right {
-    background: @base;
-    border-radius: 9999px;
 }
 
 .modules-right * {
     min-width: 36px;
 }
 
-.modules-right > widget:first-child > * {
-    border-top-left-radius: 9999px;
-    border-bottom-left-radius: 9999px;
-}
-
-.modules-right > widget:last-child > * {
-    border-top-right-radius: 9999px;
-    border-bottom-right-radius: 9999px;
-}
-
-#workspaces {
-    border-radius: 9999px;
-    background: @base;
-}
 
 #workspaces button {
     padding: 0 10px;
-    background: transparent;
     color: @text;
     border: none;
-    border-radius: 9999px;
 }
 
 #workspaces button:hover {
     background: @sky;
-    color: @base;
+    color: @bg;
     border: none;
 }
 
 #workspaces button.focused {
     background: @red;
-    color: @base;
+    color: @bg;
     border: none;
 }
 
 #workspaces button.active {
     padding: 0 15px;
-    background: @mauve;
-    color: @base;
+    background: @fg2;
+    color: @bg;
     border: none;
 }
 
 #workspaces button.urgent {
     background: shade(alpha(@red, 0.7), 0.8);
-    color: @base;
+    color: @bg;
 }
 
-#mode {
-    background: @base;
-}
 
 #clock,
 #battery,
@@ -126,7 +91,7 @@ window#waybar.solo {
 #temperature,
 #battery,
 #tray {
-    color: @pink;
+    color: @fg2;
 }
 
 #pulseaudio,
@@ -135,24 +100,24 @@ window#waybar.solo {
 #language,
 #keyboard-state,
 #clock {
-    color: @lavender;
+    color: @fg4;
 }
 
 #battery.charging, #battery.plugged {
-    color: @base;
+    color: @bg;
     background: @green;
 }
 
 @keyframes blink {
     to {
-        background: @maroon;
-        color: @base;
+        background: @purple;
+        color: @bg;
     }
 }
 
 #battery.critical:not(.charging) {
     background: @red;
-    color: @base;
+    color: @bg;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -160,23 +125,19 @@ window#waybar.solo {
     animation-direction: alternate;
 }
 
-label:focus {
-    background: @base;
-}
-
 #network.disconnected {
     background: @red;
-    color: @base;
+    color: @bg;
 }
 
 #pulseaudio.muted {
     background: @red;
-    color: @base;
+    color: @bg;
 }
 
 #temperature.critical {
     background: @red;
-    color: @base;
+    color: @bg;
 }
 
 #tray > .passive {
@@ -186,7 +147,7 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background: @peach;
-    color: @base;
+    color: @bg;
 }
 
 #idle_inhibitor {
@@ -195,11 +156,11 @@ label:focus {
 
 #idle_inhibitor.activated {
     background: @red;
-    color: @base;
+    color: @bg;
 }
 
 #language {
-    color: @base;
+    color: @bg;
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
@@ -207,7 +168,7 @@ label:focus {
 
 
 #keyboard-state {
-    color: @base;
+    color: @bg;
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;
@@ -217,13 +178,9 @@ label:focus {
     padding: 0 5px;
 }
 
-#keyboard-state > label.locked {
-    background: @base;
-}
-
 #custom-power {
     background: @red;
-    color: @base;
+    color: @bg;
     padding: 0 15px;
 
 }

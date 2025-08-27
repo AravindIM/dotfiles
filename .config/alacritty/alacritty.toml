@@ -1,8 +1,6 @@
 general.import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/gruvbox_dark.toml"
 ]
-[window]
-opacity = 0.9
 [font]
-normal = { family = "Jetbrains Mono NerdFont", style="Regular" }
-size = 12
+normal = { family = "Departure Mono NerdFont", style="Regular" }
+size = 14

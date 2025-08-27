@@ -1,6 +1,7 @@
 * {
 	background-image: none;
 	box-shadow: none;
+	font-family: Departure Mono NerdFont,FontAwesome, Roboto Bold, Helvetica, Arial, sans-serif;
 }
 
 window {
@@ -9,10 +10,10 @@ window {
 
 button {
 	border-radius: 0;
-	border-color: #cba6f7;
-	text-decoration-color: #cdd6f4;
-	color: #cdd6f4;
-	background-color: #181825;
+	border-color: #fabd2f;
+	text-decoration-color: #d79921;
+	color: #d79921;
+	background-color: #1d2021;
 	border-style: solid;
 	border-width: 1px;
 	background-repeat: no-repeat;

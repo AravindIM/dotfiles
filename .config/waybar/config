@@ -1,10 +1,10 @@
 {
   "layer" : "top",
   "position" : "top",
-  "height" : 22,
-  "spacing" : 4,
+  "height" : 24,
+  "spacing" : 3,
   "tray" : {
-    "spacing" : 5,
+    "spacing" : 3,
   },
   "modules-left" : [ "hyprland/workspaces"],
   "modules-center" : [ "hyprland/window"],
@@ -37,7 +37,7 @@
     "tooltip-format" : "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "cpu" : {
-    "format" : " {usage}% <span font='11'></span> ",
+    "format" : "{usage}% <span font='11'></span>",
     "interval" : 1,
   },
   "disk" : {
@@ -76,12 +76,12 @@
     "tooltip-format" : "{essid} {ipaddr}/{cidr}",
   },
   "pulseaudio" : {
-    "format" : "<span font='11'>{icon}</span>      {volume}%  {format_source} ",
-    "format-bluetooth" : "<span font='11'>{icon}</span> {volume}% {format_source} ",
-    "format-bluetooth-muted" : "<span font='11'>x</span> {volume}% {format_source} ",
-    "format-muted" : "<span font='11'>x</span> {format_source} ",
-    "format-source" : "<span font='10'></span> ",
-    "format-source-muted" : "<span font='11'> </span> ",
+    "format" : "<span font='11'>{icon}</span> {volume}% {format_source}",
+    "format-bluetooth" : "<span font='11'>{icon}</span> {volume}% {format_source}",
+    "format-bluetooth-muted" : "<span font='11'>x</span> {volume}% {format_source}",
+    "format-muted" : "<span font='11'>x</span> {format_source}",
+    "format-source" : "<span font='10'></span>",
+    "format-source-muted" : "<span font='11'> </span>",
     "format-icons" : {
       "headphone" : "",
       "hands-free" : "",
