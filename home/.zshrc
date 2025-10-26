@@ -33,6 +33,34 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+# Command not found pacman
+function command_not_found_handler {
+    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+    printf 'zsh: command not found: %s\n' "$1"
+    local entries=(
+        ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"}
+    )
+    if (( ${#entries[@]} ))
+    then
+        printf "${bright}$1${reset} may be found in the following packages:\n"
+        local pkg
+        for entry in "${entries[@]}"
+        do
+            # (repo package version file)
+            local fields=(
+                ${(0)entry}
+            )
+            if [[ "$pkg" != "${fields[2]}" ]]
+            then
+                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+            fi
+            printf '    /%s\n' "${fields[4]}"
+            pkg="${fields[2]}"
+        done
+    fi
+    return 127
+}
+
 # Environment
 export EDITOR="vim"
 export VISUAL="$EDITOR"
@@ -67,3 +95,7 @@ export MOZ_DBUS_REMOTE=1
 
 #[ -f "/home/aim/.ghcup/env" ] && source "/home/aim/.ghcup/env" # ghcup-env
 #. "$HOME/.cargo/env" 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
