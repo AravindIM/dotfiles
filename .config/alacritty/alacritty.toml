@@ -1,6 +1,0 @@
-general.import = [
-  "~/.config/alacritty/gruvbox_dark.toml"
-]
-[font]
-normal = { family = "Departure Mono NerdFont", style="Regular" }
-size = 14
