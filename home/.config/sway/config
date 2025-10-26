@@ -1,0 +1,278 @@
+# SWAY CONFIG
+
+include catppuccin-mocha
+
+# Variables
+
+set $mod Mod1
+set $mod2 Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $menu rofi -i -M fuzzy -show drun 
+set $term foot
+set $lock swaylock -f
+
+font pango:FiraCodeNerdFont Bold 12
+floating_modifier $mod normal
+default_border pixel 2
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+gaps inner 2
+gaps outer 2
+
+# No gaps if there's only 1 window
+smart_gaps on
+smart_borders on
+
+# Hides the borders if theres only 1 window
+
+# Output configuration
+
+output * bg ~/Pictures/Wallpaper.png fill
+output * scale 1.25
+
+# Input configuration
+input "type:touchpad" {
+	dwt enabled
+	tap disabled
+	natural_scroll enabled
+	scroll_button BTN_MIDDLE
+	scroll_method on_button_down
+	middle_emulation disabled
+}
+input "type:pointer" {
+	natural_scroll disabled
+}
+
+input "type:keyboard" {
+	xkb_layout us
+}
+
+bar {
+	swaybar_command waybar
+}
+
+# Key bindings
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term -a float
+bindsym $mod+q kill
+bindsym $mod+p exec $menu
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+c wkill
+bindsym $mod+Shift+w exec firefox
+bindsym $mod+Shift+q exec wlogout
+bindsym $mod+x exec --no-startup-id $lock
+
+# Alternate key bindings
+bindsym $mod2+Return exec $term
+bindsym $mod2+Shift+Return exec $term -a float
+bindsym $mod2+q kill
+bindsym $mod2+p exec $menu
+bindsym $mod2+Shift+r reload
+bindsym $mod2+Shift+c wkill
+bindsym $mod2+Shift+w exec firefox
+bindsym $mod2+Shift+q exec wlogout
+bindsym $mod2+x exec --no-startup-id $lock
+
+
+# Moving around:
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Alternate move your focus around
+bindsym $mod2+$left focus left
+bindsym $mod2+$down focus down
+bindsym $mod2+$up focus up
+bindsym $mod2+$right focus right
+bindsym $mod2+Left focus left
+bindsym $mod2+Down focus down
+bindsym $mod2+Up focus up
+bindsym $mod2+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Alternate move the focused window with the same, but add Shift
+bindsym $mod2+Shift+$left move left
+bindsym $mod2+Shift+$down move down
+bindsym $mod2+Shift+$up move up
+bindsym $mod2+Shift+$right move right
+bindsym $mod2+Shift+Left move left
+bindsym $mod2+Shift+Down move down
+bindsym $mod2+Shift+Up move up
+bindsym $mod2+Shift+Right move right
+
+#resize
+bindsym $mod+Control+$left exec swaymsg resize shrink right 10px || swaymsg resize grow left 10px
+bindsym $mod+Control+$down exec swaymsg resize grow down 10px || swaymsg resize shrink up 10px
+bindsym $mod+Control+$up exec swaymsg resize shrink down 10px || swaymsg resize grow up 10px
+bindsym $mod+Control+$right exec swaymsg resize grow right 10px || swaymsg resize shrink left 10px
+
+#Alternate resize
+bindsym $mod2+Control+$left exec swaymsg resize shrink right 10px || swaymsg resize grow left 10px
+bindsym $mod2+Control+$down exec swaymsg resize grow down 10px || swaymsg resize shrink up 10px
+bindsym $mod2+Control+$up exec swaymsg resize shrink down 10px || swaymsg resize grow up 10px
+bindsym $mod2+Control+$right exec swaymsg resize grow right 10px || swaymsg resize shrink left 10px
+
+
+# Workspaces:
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Alternate switch to workspace
+bindsym $mod2+1 workspace number 1
+bindsym $mod2+2 workspace number 2
+bindsym $mod2+3 workspace number 3
+bindsym $mod2+4 workspace number 4
+bindsym $mod2+5 workspace number 5
+bindsym $mod2+6 workspace number 6
+bindsym $mod2+7 workspace number 7
+bindsym $mod2+8 workspace number 8
+bindsym $mod2+9 workspace number 9
+bindsym $mod2+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Alternate move focused container to workspace
+bindsym $mod2+Shift+1 move container to workspace number 1
+bindsym $mod2+Shift+2 move container to workspace number 2
+bindsym $mod2+Shift+3 move container to workspace number 3
+bindsym $mod2+Shift+4 move container to workspace number 4
+bindsym $mod2+Shift+5 move container to workspace number 5
+bindsym $mod2+Shift+6 move container to workspace number 6
+bindsym $mod2+Shift+7 move container to workspace number 7
+bindsym $mod2+Shift+8 move container to workspace number 8
+bindsym $mod2+Shift+9 move container to workspace number 9
+bindsym $mod2+Shift+0 move container to workspace number 10
+
+# Layout stuff:
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Alternate layout stuff:
+bindsym $mod2+b splith
+bindsym $mod2+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+t layout toggle split
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+s layout stacking
+
+# Alternate switch current container between different layout styles
+bindsym $mod2+t layout toggle split
+bindsym $mod2+Shift+t layout tabbed
+bindsym $mod2+Shift+s layout stacking
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Alternate make the current focus fullscreen
+bindsym $mod2+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+space floating toggle
+
+# Alternate toggle the current focus between tiling and floating mode
+bindsym $mod2+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+Shift+space focus mode_toggle
+
+# Alternate swap focus between the tiling area and the floating area
+bindsym $mod2+Shift+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Alternate move focus to the parent container
+bindsym $mod2+a focus parent
+
+# Sticky
+bindsym $mod+s sticky toggle
+
+# Alternate sticky
+bindsym $mod2+s sticky toggle
+
+# Scratchpad:
+bindsym $mod+bracketleft move scratchpad
+bindsym $mod+bracketright scratchpad show 
+
+# Alternate scratchpad:
+bindsym $mod2+bracketleft move scratchpad
+bindsym $mod2+bracketright scratchpad show 
+
+# Media Keys
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym Shift+XF86AudioLowerVolume exec pamixer -d 5 --allow-boost
+bindsym Shift+XF86AudioRaiseVolume exec pamixer -i 5 --allow-boost
+bindsym XF86AudioMute exec pamixer -t 
+
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5 
+# bindsym Print exec mkdir -p ~/Pictures/Screenshots;grim -g "$(slurp)" - | swappy -f - -o ~/Pictures/Screenshots/Screenshot_$(date +%Hh_%Mm_%Ss_%d_%B_%Y).png && notify-send "Saved to ~/Pictures/Screenshots/Screenshot_$(date +%Hh_%Mm_%Ss_%d_%B_%Y).png"
+bindsym Print exec wl-copy < $(grimshot save area)
+
+# bindsym XF86AudioStop exec playerctl stop
+# bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioNext exec playerctl next
+# bindsym XF86AudioPrev exec playerctl previous
+
+
+# Rules
+
+# exec easyeffects  --gapplication-service 
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec hash dbus-update-activation-environment 2>/dev/null && \
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/libexec/xdg-desktop-portal -r
+#& /usr/libexec/xdg-desktop-portal-wlr
+exec xhost + local:
+exec light -S 5
+exec swayidle -w timeout 300 'swaylock -f' timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' before-sleep 'playerctl pause' before-sleep 'swaylock -f'
+exec lxpolkit
+exec wl-paste -t text --watch clipman store --no-persist
+exec nm-applet --indicator
+exec blueman-applet

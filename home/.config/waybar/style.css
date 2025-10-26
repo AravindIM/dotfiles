@@ -1,0 +1,186 @@
+@import "gruvbox-dark.css";
+
+* {
+    border: none;
+    font-family: Departure Mono NerdFont,FontAwesome, Roboto Bold, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    border-radius: 0px;
+}
+
+window#waybar {
+    background: transparent;
+    color: @fg;
+    transition-property: background;
+    transition-duration: .5s;
+    background: @bg;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+
+#window {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.modules-right {
+}
+
+.modules-right * {
+    min-width: 36px;
+}
+
+
+#workspaces button {
+    padding: 0 10px;
+    color: @text;
+    border: none;
+}
+
+#workspaces button:hover {
+    background: @sky;
+    color: @bg;
+    border: none;
+}
+
+#workspaces button.focused {
+    background: @red;
+    color: @bg;
+    border: none;
+}
+
+#workspaces button.active {
+    padding: 0 15px;
+    background: @fg2;
+    color: @bg;
+    border: none;
+}
+
+#workspaces button.urgent {
+    background: shade(alpha(@red, 0.7), 0.8);
+    color: @bg;
+}
+
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd
+#gamemode
+ {
+    padding: 0 10px;
+    color: @text;
+}
+
+#cpu,
+#network,
+#temperature,
+#battery,
+#tray {
+    color: @fg2;
+}
+
+#pulseaudio,
+#memory,
+#backlight,
+#language,
+#keyboard-state,
+#clock {
+    color: @fg4;
+}
+
+#battery.charging, #battery.plugged {
+    color: @bg;
+    background: @green;
+}
+
+@keyframes blink {
+    to {
+        background: @purple;
+        color: @bg;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: @red;
+    color: @bg;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    background: @red;
+    color: @bg;
+}
+
+#pulseaudio.muted {
+    background: @red;
+    color: @bg;
+}
+
+#temperature.critical {
+    background: @red;
+    color: @bg;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: @peach;
+    color: @bg;
+}
+
+#idle_inhibitor {
+    color: @overlay0;
+}
+
+#idle_inhibitor.activated {
+    background: @red;
+    color: @bg;
+}
+
+#language {
+    color: @bg;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+
+#keyboard-state {
+    color: @bg;
+    padding: 0 0px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#custom-power {
+    background: @red;
+    color: @bg;
+    padding: 0 15px;
+
+}
